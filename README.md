@@ -1,46 +1,91 @@
-# Getting Started with Create React App
+# Speed Game - React Frontend Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+## Instructions
 
-## Available Scripts
+How the game works:
 
-In the project directory, you can run:
+- When the game starts, the circles are rendered and one circle is randomly selected as the target.
+- The player has to click on the target as fast as possible.
+- Timer starts counting down from 10s seconds
+- When the selected circle is clicked, the score is updated and a new target is selected.
+- If the wrong circle is clicked, lives is reduced by 1
+- If the lives is 0, the game is over and the score is displayed.
+- if score is any number divisible by 5, the level is increased by 1 and or the timer is reduced by 2 seconds.
 
-### `npm start`
+- Note: you can have different levels with different timers, lives and number of circles.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### General
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Fork this repo, then clone the **fork** to your machine and start working on it. You can open a pull request as soon as possible (no need to wait until finished)
+For styling, you can use whatever css solution you want: css, scss, Material UI, etc.
 
-### `npm test`
+### Step 1
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Create a game slice with some or all the following actions:
+  - `startGame`
+  - `endGame`
+  - `increaseScore`
+  - `decreaseLives`
+  - `increaseLevel`
+  - `decreaseTimer`
+- and the following state:
+  - `score`: the current score
+  - `isRunning`: whether the game is running or not
+  - `startTime`: the time when the game started
+  - `endTime`: the time when the game ended
+  - `level`: the current level
+  - `speed`: the current speed of the game
 
-### `npm run build`
+### Step 2
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Create a `Game` component that renders the following:
+  - a `button` that starts the game
+  - a `button` that stops the game
+  - a `button` that resets the game
+  - a `div` that shows the current score
+  - a `div` that shows the current level
+  - Circles representing the current level
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Step 3
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Create a `Circle` component that renders a circle with the following properties:
 
-### `npm run eject`
+  - `size`: the size of the circle
+  - `color`: the color of the circle
+  - `onClick`: a function that is called when the circle is clicked
+  - `isTarget`: a boolean that determines whether the circle is the target or not
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Render all the circles in the `Game` component
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Circles represent the current level. For example, if the level is 1, there should be 1 circle, if the level is 2, there should be 2 circles, etc.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Step 4
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Create a `Timer` component that renders a timer with the following properties:
+  - `time`: the time to count down from
+  - `onTimeEnd`: a function that is called when the timer ends
 
-## Learn More
+### Step 5
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- use `use-sound` to play a sound when the game starts, stops, and when the user clicks on a circle
+- use `react-spring` to animate the circles when they are clicked or when the game starts or stops.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Take your time to implement the following features:
+
+- Add a timer that shows how much time is left
+- Add a button that changes the level manually
+- Give dynamic points for clicking on the target depending on the level and the time left
+- Add a button that changes the color of the circles - game theme
+- Implement two player mode
+- improve the game to make it more fun
+- Add more features if you want to
+
+## References
+
+1. Reference 1:
+   ![sample 1](media/sample1.png)
+
+2. Reference 2:
+   ![sample2](media/sample2.png)
+
+3. [Online reference](https://miro.com/app/board/uXjVPDjtQ1k=/)
