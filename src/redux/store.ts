@@ -1,7 +1,12 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
+import { circlesReducer } from "./reducers/circles"
+import { gameSlice } from "./reducers/gameSlice"
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    circlesReducer,
+    gameSlice
+  },
 })
 
 export type AppDispatch = typeof store.dispatch
