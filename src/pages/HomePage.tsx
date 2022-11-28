@@ -8,7 +8,7 @@ const HomePage = () => {
     <div>
       <div id='gameContainer'>
         {circles ? circles.map(item => {
-          return <Circle circle ={item}/>
+          return <Circle key={item.id} circle ={item}/>
         }) : <></>}
       </div>
     </div>

@@ -1,9 +1,16 @@
 
 export interface GameSettings{
-    healthPoint: number
     isGameRunning: boolean
 }
 
+export interface GameData {
+    healthPoints: number
+    scorePoints: number
+    difficulty: number
+    remainTime: number
+}
+
+export type Color = 'red' | 'green' | 'yellow' | 'orange'
 export interface ICircle{
     id: string
     size: number

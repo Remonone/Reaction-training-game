@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ICircle } from "../../types/types";
+import { shallowCopy } from "../../utils/ShallowCopy";
 
 const initialState: ICircle[] = [] 
 
@@ -16,11 +17,11 @@ const circles = createSlice({
             return state.filter(circle => circle.id !== action.payload)
         },
         highlightCircle: (state, action: PayloadAction<string>) => {
-            let circle = state.find(circle => circle.id === action.payload)
+            let circle = shallowCopy(state.find(circle => circle.id === action.payload))
             if(circle){
-                let circles = state.filter(item => item.id !== action.payload)
-                circle.isHighlighted = true
-                return [...circles, circle]
+              let circles = shallowCopy(state.filter(item => item.id !== action.payload))
+              circle.isHighlighted = true
+              return [...circles, circle]
             }
             return state
         },
